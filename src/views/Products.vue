@@ -18,6 +18,14 @@
             </tr>
         </tbody>
        </table>
+       <nav>
+  <ul class="pagination pagination-sm">
+    <li class="page-item" v-for="(value, index) in totalPages" :key="index" 
+        @click="clickHandler(value)">
+        <a :class="{'currentPage':datas.start+1 === value,'page-link':true}">{{value}}</a>
+    </li>  
+  </ul>
+</nav>
 </template>
     
 <script setup>
@@ -28,6 +36,7 @@
     const url = import.meta.env.VITE_API_JAVAURL
     const product = ref({})
     const products = ref([])
+    const totalPages = ref(0)  //總共有幾頁
     const datas = reactive({
         "start" :0,
         "rows" : 4,
@@ -36,9 +45,19 @@
         "sortType":"id"
         })
 
+    //分頁按鈕
+    const clickHandler = page => {
+       datas.start = page - 1 
+       loadProducts()
+    }
+
     const loadProducts = async()=>{
         const response = await axios.post(`${url}/products/find`, datas)
         products.value = response.data.list
+
+        //計算總共有幾頁
+        totalPages.value = datas.rows == 0 ? 1 : Math.ceil(response.data.count / datas.rows)
+        console.log(totalPages.value)
     }
 
     loadProducts()
@@ -57,6 +76,12 @@
     // loadProduct()
 </script>
     
-<style>
-    
+<style scoped>
+    .pagination li{
+        cursor: pointer;
+    }
+
+    .currentPage{
+        background-color: lightblue;
+    }
 </style>
