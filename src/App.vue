@@ -9,10 +9,8 @@ import Contact from './views/Contact.vue';
 <template> 
 <div class="container">
   <h2>Hello Vue!!</h2>
-  <HelloVue></HelloVue>
-  <Home></Home>
-  <About></About>
-  <Contact></Contact>
+  <hr />
+  <router-view></router-view>
 </div>
 
 </template>
