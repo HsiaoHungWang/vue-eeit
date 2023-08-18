@@ -18,19 +18,15 @@
             </tr>
         </tbody>
        </table>
-       <nav>
-  <ul class="pagination pagination-sm">
-    <li class="page-item" v-for="(value, index) in totalPages" :key="index" 
-        @click="clickHandler(value)">
-        <a :class="{'currentPage':datas.start+1 === value,'page-link':true}">{{value}}</a>
-    </li>  
-  </ul>
-</nav>
+<Paging :pages="totalPages" :thePage="datas.start+1"
+ @abcClick="clickHandler"></Paging>
 </template>
     
 <script setup>
     import axios from 'axios'
     import {ref, reactive} from 'vue'
+    import Paging from  '../components/Paging.vue'
+
     //GET http://172.18.105.194:8080    /pages/ajax/products/1
     //取得環境變數中的資料
     const url = import.meta.env.VITE_API_JAVAURL
@@ -77,11 +73,4 @@
 </script>
     
 <style scoped>
-    .pagination li{
-        cursor: pointer;
-    }
-
-    .currentPage{
-        background-color: lightblue;
-    }
 </style>
