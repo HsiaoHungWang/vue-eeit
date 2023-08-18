@@ -1,5 +1,13 @@
 <template>
        <h2>商品管理品頁</h2> 
+       <div class="row">
+<div class="col-3"></div>
+<div class="col-6"></div>
+<div class="col-3">
+<SearchTextBox @searchInput="inputHandler"></SearchTextBox>
+</div>
+</div>
+
        <table class="table table-bordered">
         <thead>
             <tr>
@@ -26,6 +34,7 @@
     import axios from 'axios'
     import {ref, reactive} from 'vue'
     import Paging from  '../components/Paging.vue'
+    import SearchTextBox from '../components/SearchTextBox.vue'
 
     //GET http://172.18.105.194:8080    /pages/ajax/products/1
     //取得環境變數中的資料
@@ -46,6 +55,15 @@
        datas.start = page - 1 
        loadProducts()
     }
+
+    //關鍵字搜尋
+//由 SearchTextBox Child Component 引發
+const inputHandler = value => {
+    datas.name = value
+    datas.start = 0
+    loadProducts()
+}
+
 
     const loadProducts = async()=>{
         const response = await axios.post(`${url}/products/find`, datas)
