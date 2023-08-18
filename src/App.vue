@@ -1,16 +1,19 @@
 <script setup>
-import HelloVue from './components/HelloVue.vue';
-import Home from './views/Home.vue';
-import About from './views/About.vue';
-import Contact from './views/Contact.vue';
+import 'bootstrap/dist/css/bootstrap.min.css'
+
+import Navbar from './components/Navbar.vue';
+
+
 
 </script>
 
 <template> 
 <div class="container">
-  <h2>Hello Vue!!</h2>
-  <hr />
-  <router-view></router-view>
+  <Navbar></Navbar>
+  <div class="mt-3">
+     <router-view></router-view>
+  </div>
+ 
 </div>
 
 </template>
