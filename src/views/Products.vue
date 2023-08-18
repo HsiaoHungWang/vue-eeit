@@ -10,7 +10,7 @@
     const url = import.meta.env.VITE_API_JAVAURL
     const product = ref({})
 
-    const loadProducts = async()=>{
+    const loadProduct = async()=>{
       const response = await axios.get(`${url}/products/1`)
       //console.log(response)
       //console.log(response.data)
@@ -19,7 +19,7 @@
       console.log(product.value)
     }
 
-    loadProducts()
+    loadProduct()
 </script>
     
 <style>
