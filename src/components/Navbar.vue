@@ -17,7 +17,7 @@
             <RouterLink to="/contact" class="nav-link">聯絡我們</RouterLink>
         </li>
         <li class="nav-item">
-          
+            <RouterLink to="/products" class="nav-link">商品管理</RouterLink>
         </li>
       </ul>
     </div>
