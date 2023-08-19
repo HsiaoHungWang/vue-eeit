@@ -1,35 +1,46 @@
-import { createWebHistory, createRouter} from 'vue-router'
-import Home from './views/Home.vue'
-import About from './views/About.vue'
-import Contact from './views/Contact.vue'
-import Products from './views/Products.vue'
-
-const routers = [
+import {createRouter, createWebHistory} from 'vue-router'
+import Home from './views/Home.vue';
+import About from './views/About.vue';
+import Contact from './views/Contact.vue';
+import Products from './views/Products.vue';
+import Add from './views/Add.vue';
+import Edit from './views/Edit.vue';
+const routes = [
     {
-        //http://localhost/ => Home　Component
-        path:"/",
+        //http://localhost/
+        path:'/',
         component:Home
     },
     {
-        //http://localhost/about => About Component
-        path:"/about",
+        //http://localhost/about
+        path:'/about',
         component:About
     },
     {
-         //http://localhost/contact => Contact Component
-         path:"/contact",
-         component:Contact
+        //http://localhost/contact
+        path:'/contact',
+        component:Contact
     },
     {
-         //http://localhost/products => Products Component
-         path:"/products",
-         component:Products
+        //http://localhost/products
+        path:'/products',
+        component:Products
+    },
+    {
+        //http://localhost/products/add
+        path:'/products/add',
+        component:Add
+    },
+    {
+        //http://localhost/products/edit/1
+        path:'/products/edit/:id',
+        component:Edit
     }
 ]
 
 const router = createRouter({
     history:createWebHistory(),
-    routes:routers
+    routes
 })
 
 export default router
